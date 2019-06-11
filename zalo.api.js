@@ -23,10 +23,20 @@ function getToken() {
     });
 
     const Http = new XMLHttpRequest();
-    const url = 'https://oauth.zaloapp.com/v3/auth?app_id=3998092944035386293&redirect_uri=https://hitface.github.io/';
+    var a = '';
+    const url = 'https://oauth.zaloapp.com/v3/auth?app_id=3998092944035386293&redirect_uri=https://hitface.github.io/'+a;
     Http.open("GET",url);
     Http.send();
-
+    var code = '';
+    Http.onreadystatechange=(e)=>{
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        code = url.searchParams.get("code");
+        console.log(code);
+    }
+    const urlToken = 'https://oauth.zaloapp.com/v3/access_token?app_id=3998092944035386293&app_secret=YT75ZSNE7mUD3t1fD3dJ&code='+code;
+    Http.open("GET",urlToken);
+    Http.send();
     Http.onreadystatechange=(e)=>{
         console.log(Http.response);
     }
