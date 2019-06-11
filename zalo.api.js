@@ -17,6 +17,7 @@ Zalo.getLoginStatus(function(response) {
         }
       );
     } else {
-      Zalo.login(curentState);
+       	
+Zalo.login(curentState, "get_profile,get_friends,send_message,post_feed");
     }
   });
