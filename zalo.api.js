@@ -35,10 +35,8 @@ function getToken() {
         console.log(code);
     }
     const urlToken = 'https://oauth.zaloapp.com/v3/access_token?app_id=3998092944035386293&app_secret=YT75ZSNE7mUD3t1fD3dJ&code='+code;
-    Http.open("GET",urlToken);
-    Http.send();
-    Http.onreadystatechange=(e)=>{
-        console.log(Http.response);
-    }
+    fetch(urlToken)
+    .then(data=>{return data.json()})
+    .then(res=>console.log(res));
 
 }
